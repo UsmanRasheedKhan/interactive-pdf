@@ -1,0 +1,214 @@
+/* Import base styles from Page2.css */
+@import './Page2.css';
+
+/* Two-section layout with improved spacing */
+.two-section-layout {
+  display: flex;
+  width: 95%;
+  height: calc(85vh - 100px); /* Fixed height instead of min-height */
+  margin: 15px auto 30px auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+}
+
+/* Individual section styling - each takes 50% */
+.section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Take full height of parent */
+  transition: all 0.5s ease;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Gap between sections */
+.dark-section, .light-section {
+  margin: 0 5px;
+  border: 1px solid #e0e0e0;
+  height: 100%; /* Explicitly set height */
+}
+
+/* Active and inactive section states with greyish fading */
+.section.active {
+  opacity: 1;
+  z-index: 2;
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: #222; /* Dark grey background for active section */
+  color: #f5f5f5;
+}
+
+.section.inactive {
+  opacity: 0.85; /* Less transparent for better grey effect */
+  z-index: 1;
+  transform: scale(0.98);
+  background-color: #e6e6e6; /* Light grey background instead of pure white */
+  color: #333;
+  position: relative;
+}
+
+/* Add a grey overlay to inactive section for more greyish tone */
+.section.inactive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(180, 180, 180, 0.1); /* Very subtle grey overlay */
+  z-index: 0;
+  pointer-events: none; /* Let events pass through to elements below */
+}
+
+/* Image container in each section (top 50%) */
+.section-image-container {
+  height: 50%;
+  flex: 1 0 50%; /* Flex grow, shrink, basis */
+  overflow: hidden;
+  position: relative;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Image styling */
+.section-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section-image:hover {
+  transform: scale(1.03);
+}
+
+/* Text area in each section (bottom 50%) */
+.section-text {
+  height: 50%;
+  flex: 1 0 50%; /* Flex grow, shrink, basis */
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Text styling - dynamically based on active/inactive state */
+.section.active h3 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-family: 'Georgia', serif;
+  font-size: 1.2em;
+}
+
+.section.active p {
+  color: #ccc;
+  font-family: 'Georgia', serif;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.section.inactive h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-family: 'Georgia', serif;
+  font-size: 1.2em;
+}
+
+.section.inactive p {
+  color: #555;
+  font-family: 'Georgia', serif;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+/* Arrow navigation between sections - centered vertically */
+.section-nav-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.section-nav-arrow:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.section-nav-arrow:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+/* Enhanced arrow icon styling with better visibility */
+.arrow-icon {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transition: transform 0.4s ease;
+}
+
+/* Forward arrow (right-pointing) */
+.arrow-icon.forward {
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #222;
+  margin-left: 3px; /* Visual centering */
+  animation: pulseForward 1.5s infinite;
+}
+
+/* Backward arrow (left-pointing) */
+.arrow-icon.backward {
+  border-width: 10px 15px 10px 0;
+  border-color: transparent #222 transparent transparent;
+  margin-right: 3px; /* Visual centering */
+  animation: pulseBackward 1.5s infinite;
+}
+
+/* More pronounced arrow animations */
+@keyframes pulseForward {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@keyframes pulseBackward {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-4px); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .two-section-layout {
+    flex-direction: column;
+    height: auto; /* Allow height to adjust on mobile */
+    min-height: calc(170vh - 150px);
+  }
+  
+  .section {
+    margin: 10px 0;
+    height: calc(85vh - 150px); /* Equal fixed height for each section on mobile */
+  }
+  
+  .dark-section, .light-section {
+    height: calc(85vh - 150px); /* Explicitly set height on mobile */
+  }
+}

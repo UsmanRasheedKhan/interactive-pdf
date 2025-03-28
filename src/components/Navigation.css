@@ -1,0 +1,9 @@
+.nav-arrow.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-arrow.disabled:hover {
+  background-color: #f0f0f0;
+  transform: none;
+}

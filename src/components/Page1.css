@@ -1,0 +1,1059 @@
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+/* Two-column layout for content */
+.content-wrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.text-content {
+  flex: 0 0 40%;
+  padding-right: 30px;
+  text-align: left;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  padding-top: 0; /* Remove top padding */
+  margin-top: 20px; /* Adjusted spacing */
+  margin-bottom: 20px; /* Adjusted spacing */
+}
+
+.text-content h2 {
+  color: #333;
+  margin-top: 0;
+  border-bottom: 1px solid #e0d9c5;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Image container on the right */
+.full-painting-container {
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 95%; /* Not full width to allow for some margin */
+  margin: 10px auto; /* Center horizontally with reduced top margin */
+}
+
+.full-painting-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid #e0d9c5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0; /* Remove any default margins */
+  padding: 8px; /* Add internal padding/border */
+  background-color: white; /* Optional: adds a white background around the image */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.full-painting-image:hover {
+  transform: scale(1.02); /* Subtle hover effect */
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+}
+
+.painting-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.painting-container:hover {
+  transform: scale(1.01);
+}
+
+.painting-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+  margin-top: 10px; /* Reduced from 15px */
+  font-style: italic;
+  color: #555;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 0.9em; /* Slightly smaller text */
+  text-align: center;
+}
+
+/* Popup overlay styling */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's on top of everything */
+}
+
+/* Popup content container */
+.popup-content {
+  position: relative;
+  width: 90%;
+  height: 90vh;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* No background on the container */
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid white;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10000;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+/* Popup body and image */
+.popup-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide overflow when zooming */
+}
+
+.popup-image {
+  max-width: 95%;
+  max-height: 90%; 
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Zoom controls */
+.zoom-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10000;
+}
+
+.zoom-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid white;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zoom-button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .popup-body {
+    flex-direction: row;
+  }
+  
+  .popup-image {
+    max-width: 50%;
+  }
+  
+  .popup-description {
+    max-width: 50%;
+    padding-left: 20px;
+  }
+}
+
+/* Book container */
+.book-container {
+  width: 100%;
+  max-width: 1600px; /* Set maximum width */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; /* Center horizontally */
+  background-color: #ffffff;
+}
+
+/* Navigation bar styling */
+.book-navbar {
+  background-color: #F1F4FF; /* Light blue color as requested */
+  color: #333; /* Darker text color for better contrast */
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #9090c0; /* Purplish border */
+  height: 70px; /* Set explicit height to match original */
+  box-sizing: border-box;
+}
+
+.book-title {
+  font-family: 'Georgia', serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links li button {
+  background: none;
+  border: none;
+  color: #333;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: all 0.3s;
+}
+
+.nav-links li button:hover {
+  color: #5050a0; /* Purplish hover color */
+}
+
+.nav-links li.active button {
+  border-bottom: 2px solid #6060b0; /* Purplish border for active state */
+  font-weight: bold;
+}
+
+/* Book page styling */
+.book-page {
+  flex: 1;
+  display: flex;
+  background-color: #ffffff;
+  width: 100%;
+  box-shadow: none;
+  padding: 0;
+}
+
+.page-container {
+  width: 100%;
+  max-width: none; /* Remove max-width limitation */
+  margin: 0; /* Remove margin */
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+  align-items: flex-start;
+}
+
+.content-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.painting-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 20px;
+  border: 1px solid #e0d9c5;
+  background-color: #fffef9;
+  margin-bottom: 20px;
+}
+
+.painting-container:hover {
+  transform: scale(1.01);
+}
+
+.painting-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d0c8b0;
+}
+
+.image-caption {
+  margin-top: 15px;
+  font-style: italic;
+  color: #6b4226;
+  font-family: 'Georgia', serif;
+}
+
+/* Popup styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's on top of everything */
+}
+
+.popup-content {
+  position: relative;
+  width: 90%;
+  height: 90vh;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* No background on the container */
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid white;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10000;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+.popup-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide overflow when zooming */
+}
+
+.popup-image {
+  max-width: 95%;
+  max-height: 90%; 
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Zoom controls */
+.zoom-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10000;
+}
+
+.zoom-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid white;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zoom-button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+.popup-description {
+  line-height: 1.6;
+  color: #333;
+  font-family: 'Georgia', serif;
+}
+
+h2 {
+  font-family: 'Georgia', serif;
+  color: #6b4226;
+  border-bottom: 1px solid #e0d9c5;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .popup-body {
+    flex-direction: row;
+  }
+  
+  .popup-image {
+    max-width: 50%;
+  }
+  
+  .popup-description {
+    max-width: 50%;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .book-navbar {
+    flex-direction: column;
+  }
+  
+  .nav-links {
+    margin-top: 15px;
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .nav-links li {
+    margin: 0 5px;
+  }
+  
+  .book-page {
+    padding: 20px 10px;
+  }
+  
+  .content-wrapper {
+    flex-direction: column;
+  }
+  
+  .text-content, .full-painting-container {
+    flex: 0 0 100%;
+    padding-right: 0;
+  }
+  
+  .text-content {
+    margin-bottom: 20px;
+  }
+}
+
+/* Add these styles to your existing CSS file */
+.chapter-content {
+  padding: 20px;
+  font-family: 'Georgia', serif;
+  color: #333;
+}
+
+.chapter-content h1 {
+  color: #6b4226;
+  border-bottom: 1px solid #e0d9c5;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Image row styling */
+.image-row {
+  display: flex;
+  padding: 15px 15px 10px 15px;
+  gap: 20px;
+  background-color: #ffffff;
+  align-items: center;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.image-item {
+  flex: 0 0 auto;
+  max-width: 10%;
+}
+
+.image-item img {
+  width: 100%;
+  height: 50%;
+  border-radius: 5px;
+  box-shadow: none;
+  /* border: 1px solid #e0e0e0; */
+}
+
+.image-placeholder {
+  flex: 1;
+  max-width: 10%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: fit-content;
+  box-shadow: none;
+  border: 1px solid #e0e0e0;
+}
+
+.placeholder-content {
+  color: #777;
+  font-style: italic;
+}
+
+/* Content layout for side-by-side arrangement */
+.content-layout {
+  display: flex;
+  gap: 0;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+/* Yellow paper box */
+.yellow-paper-box {
+  width: 40%;
+  background-color: #fefaed; /* Light yellowish color */
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-right: 20px;
+  height: fit-content;
+}
+
+/* Paper texture effect */
+.yellow-paper-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23e8d5a5' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.yellow-paper-box p {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 15px 0;
+  color: #5a4c30;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+}
+
+/* Adjust chapter content */
+.chapter-content {
+  flex: 1;
+  padding: 0;
+}
+
+/* Create a painting container in the chapter content */
+.painting-display {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chapter-painting {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border: 1px solid #e0d9c5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Two-column layout */
+.two-column-layout {
+  display: flex;
+  width: 100%;
+  padding-top: 0;
+  margin-top: 0;
+  align-items: flex-start; /* Align items to the top */
+}
+
+/* Left section - 40% width */
+.left-section {
+  flex: 0 0 40%;
+  padding: 0 20px 20px 20px; /* Remove top padding */
+  margin-top: 0;
+  /* background-color: #333; */
+  box-sizing: border-box;
+  align-self: flex-start; /* Align to the top */
+}
+
+/* Right section - 60% width */
+.right-section {
+  flex: 0 0 60%;
+  padding: 0 20px 20px 10px; /* Remove top padding */
+  padding-top: 0;
+  /* background-color: #70264b; */
+  box-sizing: border-box;
+  align-self: flex-start; /* Align to the top */
+}
+
+/* Text content styling */
+.text-content {
+  align-self: flex-start;
+  text-align: left;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  padding-top: 0;
+  margin-top: 20px; /* Adjusted spacing */
+  margin-bottom: 20px; /* Adjusted spacing */
+}
+
+.text-content h2 {
+  color: #333;
+  margin-top: 0;
+  border-bottom: 1px solid #e0d9c5;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Image container styling */
+.full-painting-container {
+  width: 95%; /* Not full width to allow for some margin */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align to the top-left */
+  vertical-align: top;
+  margin: 0; /* Remove margin */
+  padding-top: 0; /* Remove top padding */
+}
+
+.full-painting-image {
+  width: 90%; /* Back to 100% width */
+  height: auto;
+  object-fit: contain;
+  border: 1px solid #e0d9c5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0; /* Remove any default margins */
+   /* Add internal padding/border */
+  background-color: white; /* Optional: adds a white background around the image */
+  align-self: center;
+}
+
+.image-caption {
+  margin-top: 10px; /* Reduced from 15px */
+  font-style: italic;
+  color: #555;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 0.9em; /* Slightly smaller text */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .two-column-layout {
+    flex-direction: column;
+  }
+  
+  .left-section,
+  .right-section {
+    flex: 0 0 100%;
+  }
+  
+  .left-section {
+    padding-bottom: 0;
+  }
+}
+
+/* Yellow paper note box */
+.note-paper-box {
+  flex: 1;
+  margin: 0;
+  background-color: #fefaed; /* Light yellowish color */
+  padding: 12px 15px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+  transform: rotate(-0.5deg); /* Slight rotation for sticky note effect */
+}
+
+/* Paper texture effect */
+.note-paper-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23e8d5a5' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+/* Add a slight border/edge effect */
+.note-paper-box::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 100%;
+  height: 100%;
+  background-color: #fdf7e3;
+  z-index: -1;
+  transform: rotate(1deg);
+  border-radius: 2px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-paper-box p {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  color: #5a4c30;
+  font-family: 'Georgia', serif;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.note-paper-box strong {
+  color: #3a321f;
+}
+
+/* Note and play button container */
+.note-play-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* Play button */
+.play-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #6060b0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.play-button.playing {
+  background-color: #d04040; /* Red when playing */
+}
+
+.play-button:hover {
+  background-color: #4a4a9e;
+  transform: scale(1.05);
+}
+
+.play-button.playing:hover {
+  background-color: #b03030; /* Darker red when playing and hovering */
+}
+
+.play-button:active {
+  transform: scale(0.98);
+}
+
+/* Play button icon animation */
+.play-icon {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Triangle play icon */
+.play-button:not(.playing) .play-icon {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 12px;
+  border-color: transparent transparent transparent #ffffff;
+  margin-left: 2px; /* Center visually */
+  animation: morphToPlay 0.3s ease forwards;
+}
+
+/* Pause icon (two vertical bars) */
+.play-button.playing .play-icon {
+  width: 12px;
+  height: 12px;
+  border: none;
+  margin-left: 0;
+  position: relative;
+  animation: morphToPause 0.3s ease forwards;
+}
+
+.play-button.playing .play-icon::before,
+.play-button.playing .play-icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.play-button.playing .play-icon::before {
+  left: 0;
+}
+
+.play-button.playing .play-icon::after {
+  right: 0;
+}
+
+/* Animations */
+@keyframes morphToPlay {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes morphToPause {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Make sure text content has proper bottom spacing */
+.text-content {
+  align-self: flex-start;
+  text-align: left;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  padding-top: 0;
+  margin-top: 20px; /* Adjusted spacing */
+  margin-bottom: 20px; /* Adjusted spacing */
+}
+
+/* Top paper note styling */
+.top-note {
+  margin: 5px 0 15px 0;
+  transform: rotate(0.5deg); /* Opposite rotation for visual interest */
+  background-color: #fff8e1; /* Slightly different yellow shade */
+}
+
+.top-note::after {
+  right: 5px;
+  bottom: -5px;
+  transform: rotate(-1deg); /* Opposite rotation */
+}
+
+/* Secondary navigation strip */
+.secondary-nav-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9ff;
+  border-bottom: 1px solid #9090c0; /* Same purplish border */
+  height: 30px; /* Very thin strip */
+  padding: 0 25px;
+}
+
+/* Navigation arrows container */
+.nav-arrows {
+  display: flex;
+  gap: 15px;
+}
+
+/* Individual arrow buttons */
+.nav-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6060b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+  font-size: 14px;
+}
+
+.nav-arrow:hover {
+  color: #4a4a9e;
+  transform: scale(1.1);
+}
+
+.arrow-left, .arrow-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Secondary links on the right */
+.secondary-links {
+  display: flex;
+  gap: 20px;
+}
+
+.secondary-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: 'Georgia', serif;
+  transition: color 0.2s;
+}
+
+.secondary-links a:hover {
+  color: #6060b0;
+  text-decoration: underline;
+}
+
+/* Make sure the image row doesn't have top margin/padding */
+.image-row {
+  margin-top: 0;
+}
+
+/* Course information styling */
+.course-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 0 0 5px 15px;
+  gap: 5px;
+}
+
+/* Course information styling - side by side */
+.course-info {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0 0 15px;
+}
+
+.course-topics {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.course-part {
+  font-family: 'Georgia', serif;
+  font-size: 1.1em; /* Increased font size */
+  color: #22685D; /* Both have the same color now */
+}
+
+.course-unit {
+  font-family: 'Georgia', serif;
+  font-size: 1.1em; /* Increased font size */
+  font-weight: 600;
+  color: #22685D;
+}
+
+.course-part {
+  font-family: 'Georgia', serif;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.course-unit {
+  font-family: 'Georgia', serif;
+  font-size: 1em;
+  font-weight: 600;
+  color: #22685D;
+}
+
+/* Egyptian man image styling */
+.egyptian-man-container {
+  height: 100%;
+  margin-right: 10px;
+}
+
+.egyptian-man-image {
+  height: 100%;
+  max-height: 75px;
+  object-fit: contain;
+}
+
+/* Logo styling in navbar */
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 40px; /* Control the height of the logos */
+}
+
+.right-logo {
+  justify-content: flex-end;
+}
+
+.oxford-logo {
+  height: 100%;
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.oup-logo {
+  height: 90%;
+  max-height: 36px;
+  width: auto;
+  object-fit: contain;
+}
