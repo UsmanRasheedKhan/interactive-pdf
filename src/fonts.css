@@ -1,0 +1,28 @@
+/* Import only the font files you actually have */
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('./assets/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Josefin Sans Bold';
+    src: url('./assets/fonts/JosefinSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Josefin Sans Italic';
+    src: url('./assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Papyrus';
+    src: url('./assets/fonts/Papyrus.ttc') format('truetype-collection');
+    font-weight: normal;
+    font-style: normal;
+  }
